@@ -5,15 +5,22 @@ export enum ThemeVariant {
 export type ColorT = {
     base: string;
     text: string;
+    lightblue: string;
+    blue: string;
+    green: string;
 };
 
 export type FontWeightT = {
     regular: string;
+    medium: string;
+    semibold: string;
     bold: string;
+    black: string;
 };
 
 export type FontFamilyT = {
     base: string;
+    heading: string;
 };
 
 export type ThemeT = {

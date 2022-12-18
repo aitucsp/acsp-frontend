@@ -4,10 +4,14 @@ const themeBase: Omit<ThemeT, 'type' | 'colors'> = {
     font: {
         weight: {
             regular: '400',
+            medium: '500',
+            semibold: '600',
             bold: '700',
+            black: '900',
         },
         family: {
-            base: 'Arial, sans-serif',
+            base: 'SF Pro Display, sans-serif',
+            heading: 'Graphik LCG, sans-serif',
         },
     },
     transition: {

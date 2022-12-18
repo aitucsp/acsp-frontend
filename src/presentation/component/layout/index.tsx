@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { useService } from 'presentation/context/Container';
 import UiGlobalController from 'presentation/controller/UiGlobalController';
 import globalCss from 'presentation/component/layout/common/globalCss';
+import Header from 'presentation/component/layout/Header';
 import { LayoutWrapper, Main } from './styles';
 
 const Layout: FC = observer((props) => {
@@ -13,7 +14,7 @@ const Layout: FC = observer((props) => {
     return (
         <>
             <LayoutWrapper>
-                {/* Header */}
+                <Header />
                 <Main {...mainBlockConfig}>{children}</Main>
                 {/* Footer */}
             </LayoutWrapper>

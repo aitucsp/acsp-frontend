@@ -6,7 +6,10 @@ const light: ThemeT = {
     type: ThemeVariant.Light,
     colors: {
         base: '#FFFFFF',
-        text: '#000000',
+        text: '#13293D',
+        lightblue: '#3E92CC',
+        blue: '#2A628F',
+        green: '#0DA16C',
     },
 };
 

@@ -1,7 +1,8 @@
 import { FC } from 'react';
+import Wrapper from './styles';
 
 const HomePage: FC = () => {
-    return <div>Home page</div>;
+    return <Wrapper>Home page</Wrapper>;
 };
 
 export default HomePage;

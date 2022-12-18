@@ -37,10 +37,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/taptima/skeleton-front-end.git"
+        "url": "https://github.com/aitucsp/acsp-frontend.git"
     },
     "bugs": {
-        "url": "https://github.com/taptima/skeleton-front-end/issues"
+        "url": "https://github.com/aitucsp/acsp-frontend/issues"
     },
     "dependencies": {
         "@bit/taptima.common.svg-sprite-icon": "^2.0.5",
