@@ -126,4 +126,7 @@ export const Technology = styled.div`
     margin-top: 5px;
 `;
 
-export const Logo = styled.img``;
+export const Logo = styled.img`
+    width: 25px;
+    height: 25px;
+`;

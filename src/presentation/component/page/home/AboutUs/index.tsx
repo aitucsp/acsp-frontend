@@ -65,19 +65,19 @@ const AboutUs = () => {
                             <Stack>
                                 <Title>Logging</Title>
                                 <Technology>
-                                    <Logo src="/images/landing/stack/zap.png" alt="Zap" />
+                                    <Logo src="/images/landing/stack/zap.svg" alt="Zap" />
                                     Zap
                                 </Technology>
                             </Stack>
                             <Stack>
                                 <Title>Containers</Title>
                                 <Technology>
-                                    <Logo src="/images/landing/stack/docker.png" alt="Docker" />
+                                    <Logo src="/images/landing/stack/docker.svg" alt="Docker" />
                                     Docker
                                 </Technology>
                                 <Technology>
                                     <Logo
-                                        src="/images/landing/stack/kubernetes.png"
+                                        src="/images/landing/stack/kubernetes.svg"
                                         alt="Kubernetes"
                                     />
                                     Kubernetes
@@ -88,26 +88,26 @@ const AboutUs = () => {
                             <Stack>
                                 <Title>Testing</Title>
                                 <Technology>
-                                    <Logo src="/images/landing/stack/layer.png" alt="Testify" />
+                                    <Logo src="/images/landing/stack/layer.svg" alt="Testify" />
                                     Testify
                                 </Technology>
                                 <Technology>
-                                    <Logo src="/images/landing/stack/layer.png" alt="GoMock" />
+                                    <Logo src="/images/landing/stack/layer.svg" alt="GoMock" />
                                     GoMock
                                 </Technology>
                                 <Technology>
-                                    <Logo src="/images/landing/stack/layer.png" alt="GoConvey" />
+                                    <Logo src="/images/landing/stack/layer.svg" alt="GoConvey" />
                                     GoConvey
                                 </Technology>
                             </Stack>
                             <Stack>
                                 <Title>Engine</Title>
                                 <Technology>
-                                    <Logo src="/images/landing/stack/go.png" alt="Golang" />
+                                    <Logo src="/images/landing/stack/golang.png" alt="Golang" />
                                     Golang
                                 </Technology>
                                 <Technology>
-                                    <Logo src="/images/landing/stack/rest.png" alt="Rest" />
+                                    <Logo src="/images/landing/stack/rest.svg" alt="Rest" />
                                     REST
                                 </Technology>
                             </Stack>
@@ -116,7 +116,7 @@ const AboutUs = () => {
                             <Stack>
                                 <Title>Web framework</Title>
                                 <Technology>
-                                    <Logo src="/images/landing/stack/fiber.png" alt="Fiber" />
+                                    <Logo src="/images/landing/stack/fiber.svg" alt="Fiber" />
                                     Fiber
                                 </Technology>
                             </Stack>
@@ -130,7 +130,7 @@ const AboutUs = () => {
                             <Stack>
                                 <Title>Database</Title>
                                 <Technology>
-                                    <Logo src="/images/landing/stack/mongo.png" alt="MongoDB" />
+                                    <Logo src="/images/landing/stack/mongodb.png" alt="MongoDB" />
                                     MongoDB
                                 </Technology>
                             </Stack>
