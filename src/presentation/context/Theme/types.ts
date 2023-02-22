@@ -4,6 +4,7 @@ export enum ThemeVariant {
 
 export type ColorT = {
     base: string;
+    gray: string;
     text: string;
     lightblue: string;
     blue: string;

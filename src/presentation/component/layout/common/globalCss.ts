@@ -17,6 +17,7 @@ const globalCss = (theme: ThemeT): SerializedStyles => css`
         line-height: 1.2;
         -webkit-font-smoothing: antialiased;
         -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
     }
 
     *,

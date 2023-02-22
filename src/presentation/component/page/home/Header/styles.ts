@@ -2,12 +2,10 @@ import styled from '@emotion/styled';
 import { rem } from 'polished';
 import SvgSpriteIcon from '@bit/taptima.common.svg-sprite-icon';
 
-export const Wrapper = styled.header``;
-
-export const Inner = styled.div`
+export const Wrapper = styled.header`
     display: grid;
-    grid-template-columns: 54px 3fr fit-content(280px);
-    margin-bottom: 200px;
+    align-items: center;
+    grid-template-columns: 54px 3fr fit-content(300px);
     margin-top: 36px;
 `;
 

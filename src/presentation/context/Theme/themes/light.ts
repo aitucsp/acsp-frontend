@@ -10,6 +10,7 @@ const light: ThemeT = {
         lightblue: '#3E92CC',
         blue: '#2A628F',
         green: '#0DA16C',
+        gray: '#F0F0F0',
     },
 };
 
