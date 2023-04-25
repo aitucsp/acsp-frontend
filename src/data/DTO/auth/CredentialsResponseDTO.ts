@@ -1,7 +1,7 @@
 import * as t from 'io-ts';
 
 const CredentialsResponseDTO = t.type({
-    token: t.string,
+    access_token: t.string,
     refresh_token: t.string,
 });
 

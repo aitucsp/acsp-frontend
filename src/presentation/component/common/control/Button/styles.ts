@@ -1,15 +1,16 @@
 import styled from '@emotion/styled';
 import { lighten, rem, rgba } from 'polished';
-import { css } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
 import SvgSpriteIcon from '@bit/taptima.common.svg-sprite-icon';
 import { ThemeT } from 'presentation/context/Theme';
 
 export type SizeT = 'small' | 'medium' | 'large';
-export type ColorT = 'green' | 'lightblue' | 'blue' | 'darkblue';
+export type ColorT = 'green' | 'lightblue' | 'blue' | 'darkblue' | 'white';
 
 type Props = {
     $size: SizeT;
     $color: ColorT;
+    $css?: SerializedStyles;
 };
 
 const greenColorCss = (theme: ThemeT) => css`
@@ -61,6 +62,19 @@ const blueColorCss = (theme: ThemeT) => css`
     }
 `;
 
+const whiteColorCss = (theme: ThemeT) => css`
+    background-color: ${theme.colors.base};
+    color: ${theme.colors.text};
+
+    &:hover {
+        background-color: ${lighten(0.05, theme.colors.base)};
+    }
+
+    &:focus {
+        box-shadow: 0 5px 16px 0 ${rgba('#000', 0.16)}, 0 0 0 3px ${rgba(theme.colors.blue, 0.3)};
+    }
+`;
+
 const smallSizeCss = css`
     padding: 10px 16px;
     font-size: ${rem(18)};
@@ -94,10 +108,13 @@ export const Wrapper = styled.button<Props>`
     ${({ $color, theme }) => $color === 'lightblue' && lightBlueColorCss(theme)}
     ${({ $color, theme }) => $color === 'darkblue' && darkBlueColorCss(theme)}
     ${({ $color, theme }) => $color === 'blue' && blueColorCss(theme)}
-    
+    ${({ $color, theme }) => $color === 'white' && whiteColorCss(theme)}
+
     ${({ $size }) => $size === 'small' && smallSizeCss}
     ${({ $size }) => $size === 'medium' && mediumSizeCss}
     ${({ $size }) => $size === 'large' && largeSizeCss}
+
+    ${({ $css }) => $css}
 `;
 
 export const Icon = styled(SvgSpriteIcon)`

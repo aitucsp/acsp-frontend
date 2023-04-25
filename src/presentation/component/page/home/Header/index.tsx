@@ -1,18 +1,23 @@
 import React, { FC } from 'react';
+import { observer } from 'mobx-react-lite';
 import logoIcon from 'presentation/svg/logo.svg?sprite';
 import loginIcon from 'presentation/svg/login.svg';
 import profileIcon from 'presentation/svg/profile.svg';
+import { useService } from 'presentation/context/Container';
+import ModalController from 'presentation/controller/ModalController';
 import Container from 'presentation/component/common/block/Container';
 import Button from 'presentation/component/common/control/Button';
 import {
-    Wrapper,
-    Links,
-    Link,
     Buttons,
+    Link,
+    Links,
     LogoIcon,
+    Wrapper,
 } from 'presentation/component/page/home/Header/styles';
 
-const Header: FC = () => {
+const Header: FC = observer(() => {
+    const { handleSignInModalOpen, handleSignUpModalOpen } = useService(ModalController);
+
     return (
         <Container>
             <Wrapper>
@@ -24,16 +29,26 @@ const Header: FC = () => {
                     <Link href="/src/pages">Contacts</Link>
                 </Links>
                 <Buttons>
-                    <Button color="green" size="medium" icon={loginIcon}>
+                    <Button
+                        color="green"
+                        size="medium"
+                        icon={loginIcon}
+                        onClick={handleSignInModalOpen}
+                    >
                         Sign In
                     </Button>
-                    <Button color="lightblue" size="medium" icon={profileIcon}>
+                    <Button
+                        color="lightblue"
+                        size="medium"
+                        icon={profileIcon}
+                        onClick={handleSignUpModalOpen}
+                    >
                         Sign Up
                     </Button>
                 </Buttons>
             </Wrapper>
         </Container>
     );
-};
+});
 
 export default Header;

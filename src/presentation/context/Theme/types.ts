@@ -9,6 +9,7 @@ export type ColorT = {
     lightblue: string;
     blue: string;
     green: string;
+    red: string;
 };
 
 export type FontWeightT = {

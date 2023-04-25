@@ -47,6 +47,15 @@ export default class ApiClient implements AbstractApiClient {
         this.initCredentials();
     }
 
+    private static getCredentialsFromLocalStorage(): Credentials | undefined {
+        try {
+            const localStorageContent = localStorage.getItem(CREDENTIALS_LOCAL_STORAGE_NAME);
+            const { access, refresh } = JSON.parse(localStorageContent || '');
+
+            return new Credentials(access, refresh);
+        } catch {}
+    }
+
     public initCredentials(): void {
         const credentials = ApiClient.getCredentialsFromLocalStorage();
 
@@ -66,15 +75,6 @@ export default class ApiClient implements AbstractApiClient {
     public resetCredentials(): void {
         this.credentials = undefined;
         localStorage.removeItem(CREDENTIALS_LOCAL_STORAGE_NAME);
-    }
-
-    private static getCredentialsFromLocalStorage(): Credentials | undefined {
-        try {
-            const localStorageContent = localStorage.getItem(CREDENTIALS_LOCAL_STORAGE_NAME);
-            const { access, refresh } = JSON.parse(localStorageContent || '');
-
-            return new Credentials(access, refresh);
-        } catch {}
     }
 
     public isCredentialsPresent(): boolean {
@@ -107,7 +107,7 @@ export default class ApiClient implements AbstractApiClient {
             const credentials = AbstractApiClient.decode(
                 CredentialsResponseDTO,
                 undefined,
-                ({ token, refresh_token }) => new Credentials(token, refresh_token),
+                ({ access_token, refresh_token }) => new Credentials(access_token, refresh_token),
                 data,
             );
 

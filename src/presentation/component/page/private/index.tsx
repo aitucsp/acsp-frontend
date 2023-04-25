@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { HOME } from 'constant/route';
-import { Wrapper, Title, Link } from './styles';
+import { Link, Title, Wrapper } from './styles';
 
 const PrivatePage: FC = () => {
     return (
         <Wrapper>
-            <Title>Доступ закрыт</Title>
-            <Link href={HOME}>На главную</Link>
+            <Title>Access closed</Title>
+            <Link href={HOME}>Go to home page</Link>
         </Wrapper>
     );
 };

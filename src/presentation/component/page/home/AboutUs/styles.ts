@@ -18,7 +18,7 @@ export const Heading = styled.h2`
     font-size: ${rem(42)};
 
     span {
-        color: ${({ theme }) => theme.colors.lightblue};
+        color: ${({ theme }) => theme.colors.blue};
     }
 `;
 
@@ -113,7 +113,7 @@ export const Title = styled.h6`
 export const Stack = styled.div`
     margin-top: 15px;
 
-    &:first-child {
+    &:first-of-type {
         margin-top: 0;
     }
 `;

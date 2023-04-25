@@ -11,6 +11,7 @@ const light: ThemeT = {
         blue: '#2A628F',
         green: '#0DA16C',
         gray: '#F0F0F0',
+        red: '#ff364e',
     },
 };
 
