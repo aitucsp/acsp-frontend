@@ -54,15 +54,16 @@ const Answers: React.FC<Props> = (props) => {
                     </Button>
                 </ControlWrapper>
             </InputBlock>
-            {comments.map((currentComment) => (
-                <InputBlock>
-                    <MyInfo>
-                        <MyImage src="https://bsa.web.unc.edu/wp-content/uploads/sites/14595/2019/10/kushal_student_profile.jpg" />
-                        <MyName>Ernest Murzashev</MyName>
-                    </MyInfo>
-                    <CommentText>{currentComment.text}</CommentText>
-                </InputBlock>
-            ))}
+            {comments &&
+                comments.map((currentComment) => (
+                    <InputBlock>
+                        <MyInfo>
+                            <MyImage src="https://bsa.web.unc.edu/wp-content/uploads/sites/14595/2019/10/kushal_student_profile.jpg" />
+                            <MyName>Ernest Murzashev</MyName>
+                        </MyInfo>
+                        <CommentText>{currentComment.text}</CommentText>
+                    </InputBlock>
+                ))}
         </Wrapper>
     );
 };

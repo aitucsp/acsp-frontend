@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from 'mobx';
+import { action, autorun, makeObservable, observable } from 'mobx';
 import User from 'domain/entity/app/User';
 
 export default class AuthStore {
@@ -12,6 +12,11 @@ export default class AuthStore {
             message: observable,
             setUser: action.bound,
             setMessage: action.bound,
+        });
+
+        autorun(() => {
+            console.log('AuthStore has changed:');
+            console.log('User:', this.user);
         });
     }
 

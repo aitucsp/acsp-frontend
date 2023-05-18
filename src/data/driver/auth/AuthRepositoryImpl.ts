@@ -1,6 +1,6 @@
 import { inject, injectable } from 'inversify';
 import HttpStatusCode from 'constant/HttpStatusCode';
-import { SIGN_IN } from 'constant/apiRoutes';
+import { GET_PROFILE, SIGN_IN } from 'constant/apiRoutes';
 import LoginResult from 'domain/entity/auth/LoginResult';
 import LogoutResult from 'domain/entity/auth/LogoutResult';
 import User from 'domain/entity/app/User';
@@ -46,12 +46,14 @@ export default class AuthRepositoryImpl extends AuthRepository {
 
             if (credentials) {
                 this.abstractApi.setCredentials(credentials, true);
-                this.appRepository.setUser(new User(123, UserRole.STUDENT));
+                this.appRepository.setUser(new User(123, UserRole.STUDENT, '', '', ''));
+                this.store.setUser(new User(123, UserRole.STUDENT, '', '', ''));
 
                 return LoginResult.SuccessfullyLoggedIn;
             }
 
-            this.appRepository.setUser(new User(NaN, UserRole.VISITOR));
+            this.appRepository.setUser(new User(NaN, UserRole.VISITOR, '', '', ''));
+            this.store.setUser(new User(NaN, UserRole.VISITOR, '', '', ''));
 
             return LoginResult.UnknownError;
         } catch ({ response }) {
@@ -61,6 +63,17 @@ export default class AuthRepositoryImpl extends AuthRepository {
 
             return LoginResult.UnknownError;
         }
+    }
+
+    public async fetchUser(): Promise<any> {
+        const { data } = await this.abstractApi.restWithAuthorization.get(GET_PROFILE);
+
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        const { id, email, image_url, name } = data.user;
+
+        this.appRepository.setUser(new User(id, UserRole.STUDENT, email, name, image_url));
+
+        return data;
     }
 
     public async logout(): Promise<LogoutResult> {

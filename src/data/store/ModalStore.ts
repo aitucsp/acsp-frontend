@@ -5,6 +5,7 @@ export default class ModalStore {
     openModalTypes: Record<ModalType, boolean> = {
         [ModalType.SignIn]: false,
         [ModalType.SignUp]: false,
+        [ModalType.CreateSearchOfTeammate]: false,
     };
 
     constructor() {

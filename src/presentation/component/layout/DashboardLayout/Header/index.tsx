@@ -2,6 +2,7 @@ import React from 'react';
 import linkArrowIcon from 'presentation/svg/navbar/link-arrow.svg?sprite';
 import { useService } from 'presentation/context/Container';
 import AuthController from 'presentation/controller/AuthController';
+import AppGlobalController from 'presentation/controller/AppGlobalController';
 import {
     Avatar,
     Description,
@@ -15,14 +16,16 @@ import {
 
 const Header = () => {
     const { handleLogoutButtonClick } = useService(AuthController);
+    const { user } = useService(AppGlobalController);
+    console.log(user);
 
     return (
         <Wrapper>
             <Title>Corporate self-learning portal based on Astana IT University</Title>
             <UserWrapper>
                 <Info>
-                    <Name>Ernest Murzashev</Name>
-                    <Description>Connoisseur</Description>
+                    <Name>{user.name ?? ''}</Name>
+                    <Description>{user?.role?.toLowerCase() ?? ''}</Description>
                 </Info>
                 <Avatar src="https://bsa.web.unc.edu/wp-content/uploads/sites/14595/2019/10/kushal_student_profile.jpg" />
                 <Dropdown icon={linkArrowIcon} onClick={handleLogoutButtonClick} />

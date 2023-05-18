@@ -9,4 +9,6 @@ export default abstract class AuthRepository extends SerializableRepository {
     public abstract getMessage(): string;
 
     public abstract setMessage(message: string): void;
+
+    public abstract fetchUser(): Promise<void>;
 }

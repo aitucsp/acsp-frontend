@@ -15,6 +15,10 @@ export default class ModalController {
         return this.modalRepository.getModalOpenedByType(ModalType.SignUp);
     }
 
+    public get isCreateSearchOfTeammateOpened(): boolean {
+        return this.modalRepository.getModalOpenedByType(ModalType.CreateSearchOfTeammate);
+    }
+
     public handleSignInModalOpen = (): void => {
         this.modalRepository.setModalOpened(ModalType.SignIn);
     };
@@ -29,5 +33,13 @@ export default class ModalController {
 
     public handleSignUpModalClose = (): void => {
         this.modalRepository.setModalClosed(ModalType.SignUp);
+    };
+
+    public handleCreateSearchOfTeammateModalOpen = (): void => {
+        this.modalRepository.setModalOpened(ModalType.CreateSearchOfTeammate);
+    };
+
+    public handleCreateSearchOfTeammateModalClose = (): void => {
+        this.modalRepository.setModalClosed(ModalType.CreateSearchOfTeammate);
     };
 }

@@ -20,6 +20,12 @@ export default class AuthController {
         return this.authRepository.getMessage();
     }
 
+    public fetchUser = async (): Promise<any> => {
+        const data = await this.authRepository.fetchUser();
+
+        return data;
+    };
+
     public handleLoginFormSubmit = async (email: string, password: string): Promise<void> => {
         this.authRepository.setMessage('');
 
