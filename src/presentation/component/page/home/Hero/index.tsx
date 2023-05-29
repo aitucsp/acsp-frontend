@@ -1,27 +1,32 @@
 import { FC } from 'react';
+import { observer } from 'mobx-react-lite';
 import studentIcon from 'presentation/svg/student.svg';
 import megaphoneIcon from 'presentation/svg/megaphone.svg';
 import studentCapIcon from 'presentation/svg/student-cap.svg';
 import medalIcon from 'presentation/svg/medal.svg';
 import eyeIcon from 'presentation/svg/eye.svg';
+import { useService } from 'presentation/context/Container';
+import ModalController from 'presentation/controller/ModalController';
 import Container from 'presentation/component/common/block/Container';
 import Button from 'presentation/component/common/control/Button';
 import {
-    Content,
-    Heading,
-    Wrapper,
-    SubHeading,
     Bullet,
-    BulletWrapper,
     BulletIcon,
     BulletIconBox,
     BulletText,
+    BulletWrapper,
     Buttons,
+    Content,
+    Heading,
     Image,
     ImageWrapper,
+    SubHeading,
+    Wrapper,
 } from './styles';
 
-const Hero: FC = () => {
+const Hero: FC = observer(() => {
+    const { handleVideoModalOpen } = useService(ModalController);
+
     return (
         <Container>
             <Wrapper>
@@ -62,7 +67,12 @@ const Hero: FC = () => {
                         <Button color="lightblue" size="large">
                             LEARN MORE
                         </Button>
-                        <Button color="darkblue" size="large" icon={eyeIcon}>
+                        <Button
+                            color="darkblue"
+                            size="large"
+                            icon={eyeIcon}
+                            onClick={handleVideoModalOpen}
+                        >
                             VIDEO
                         </Button>
                     </Buttons>
@@ -73,6 +83,6 @@ const Hero: FC = () => {
             </Wrapper>
         </Container>
     );
-};
+});
 
 export default Hero;

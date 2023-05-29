@@ -4,6 +4,10 @@ import { ThemeT } from 'presentation/context/Theme';
 import fontsCss from 'presentation/component/layout/common/fontsCss';
 
 const globalCss = (theme: ThemeT): SerializedStyles => css`
+    :root {
+        --toastify-color-progress-light: ${theme.colors.green};
+    }
+
     ${normalize()};
     ${fontsCss(theme)};
 
@@ -18,6 +22,7 @@ const globalCss = (theme: ThemeT): SerializedStyles => css`
         -webkit-font-smoothing: antialiased;
         -webkit-overflow-scrolling: touch;
         overflow-x: hidden;
+        scroll-behavior: smooth;
     }
 
     *,

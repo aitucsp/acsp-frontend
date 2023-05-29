@@ -6,6 +6,8 @@ export default class ModalStore {
         [ModalType.SignIn]: false,
         [ModalType.SignUp]: false,
         [ModalType.CreateSearchOfTeammate]: false,
+        [ModalType.InviteTeammate]: false,
+        [ModalType.Video]: false,
     };
 
     constructor() {

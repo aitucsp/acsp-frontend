@@ -17,6 +17,13 @@ export const Banner = styled.div`
     color: #18435a;
 `;
 
+export const BannerImage = styled.img`
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+`;
+
 export const HotlinksHeading = styled.div`
     font-size: ${rem(18)};
     margin-top: 38px;

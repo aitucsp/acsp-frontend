@@ -47,7 +47,7 @@ const SignInModal = observer(() => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                {message && <ErrorBlock>{message}</ErrorBlock>}
+                {message && <ErrorBlock status="error">{message}</ErrorBlock>}
                 <ButtonContainer>
                     <Button color="lightblue" size="medium" onClick={handleSignUpClick}>
                         Sign Up

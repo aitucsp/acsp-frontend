@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { ARTICLES, HOME, TASKS, TEAMMATES } from 'constant/route';
+import { CONTESTS, DASHBOARD, PBL, SCHOLAR, TEAMMATES } from 'constant/route';
 import logoIcon from 'presentation/svg/logo.svg?sprite';
 import capIcon from 'presentation/svg/navbar/cap.svg?sprite';
 import linkArrowIcon from 'presentation/svg/navbar/link-arrow.svg?sprite';
@@ -23,39 +23,41 @@ import {
 const Navbar = () => {
     return (
         <Wrapper>
-            <NextLink href={HOME} passHref>
+            <NextLink href={DASHBOARD} passHref>
                 <LogoWrapper>
                     <LogoIcon icon={logoIcon} />
                 </LogoWrapper>
             </NextLink>
             <CenteredText>Menu of site</CenteredText>
             <Links>
-                <NextLink href={TASKS} passHref>
-                    <Link href="/dashboard">
+                <NextLink href={PBL} passHref>
+                    <Link>
                         <LinkIcon icon={capIcon} />
-                        <LinkText>Program-Based Learning</LinkText>
+                        <LinkText>Projects and courses</LinkText>
                         <LinkArrowIcon icon={linkArrowIcon} />
                     </Link>
                 </NextLink>
                 <NextLink href={TEAMMATES} passHref>
                     <Link>
                         <LinkIcon icon={studentsIcon} />
-                        <LinkText>Students Forum</LinkText>
+                        <LinkText>Search of teammates</LinkText>
                         <LinkArrowIcon icon={linkArrowIcon} />
                     </Link>
                 </NextLink>
-                <NextLink href={ARTICLES} passHref>
+                <NextLink href={SCHOLAR} passHref>
                     <Link href="/dashboard">
                         <LinkIcon icon={backpackIcon} />
-                        <LinkText>Materials/Articles</LinkText>
+                        <LinkText>Scholar</LinkText>
                         <LinkArrowIcon icon={linkArrowIcon} />
                     </Link>
                 </NextLink>
-                <Link href="/dashboard">
-                    <LinkIcon icon={trophyIcon} />
-                    <LinkText>Contests</LinkText>
-                    <LinkArrowIcon icon={linkArrowIcon} />
-                </Link>
+                <NextLink href={CONTESTS} passHref>
+                    <Link>
+                        <LinkIcon icon={trophyIcon} />
+                        <LinkText>Contests</LinkText>
+                        <LinkArrowIcon icon={linkArrowIcon} />
+                    </Link>
+                </NextLink>
             </Links>
             <CenteredText>My courses</CenteredText>
             <NoCourseText>

@@ -28,10 +28,11 @@ type Props = {
     upvotes: number;
     topic: string;
     id: string;
+    imageUrl: string;
 };
 
 const ArticleCard: React.FC<Props> = (props) => {
-    const { createdAt, upvotes, topic, id } = props;
+    const { createdAt, upvotes, topic, id, imageUrl } = props;
 
     if (!createdAt) {
         return null;
@@ -42,7 +43,7 @@ const ArticleCard: React.FC<Props> = (props) => {
     return (
         <Wrapper>
             <ImageWrapper>
-                <Image src="https://dev.java/assets/images/java-logo-vert-blk.png" />
+                <Image src={`https://${imageUrl}`} />
             </ImageWrapper>
             <Content>
                 <Details>

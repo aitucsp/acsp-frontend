@@ -3,6 +3,7 @@ import { ReactElement, useRef } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { enableStaticRendering } from 'mobx-react-lite';
+import { ToastContainer } from 'react-toastify';
 import appContainerFactory from 'container/AppContainer';
 import isServer from 'helper/common/isServer';
 import Logger from 'util/Logger';
@@ -12,6 +13,7 @@ import { AppContextProvider } from 'presentation/context/Container';
 import ContextComposer from 'presentation/context/ContextComposer';
 import AppGlobalController from 'presentation/controller/AppGlobalController';
 import Seo from 'presentation/component/layout/Seo';
+import 'react-toastify/dist/ReactToastify.css';
 
 enableStaticRendering(isServer());
 
@@ -54,6 +56,7 @@ function App(props: AppProps): ReactElement {
                 <Seo />
                 <Layout>
                     <Component {...pageProps} />
+                    <ToastContainer />
                 </Layout>
             </ContextComposer>
         </>

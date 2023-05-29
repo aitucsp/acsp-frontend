@@ -23,9 +23,9 @@ const Header: FC = observer(() => {
             <Wrapper>
                 <LogoIcon icon={logoIcon} />
                 <Links>
-                    <Link href="/src/pages">For students</Link>
-                    <Link href="/src/pages">About us</Link>
-                    <Link href="/src/pages">Career</Link>
+                    <Link href="#for-students">For students</Link>
+                    <Link href="#about">About us</Link>
+                    <Link href="#career">Career</Link>
                     <Link href="/src/pages">Contacts</Link>
                 </Links>
                 <Buttons>

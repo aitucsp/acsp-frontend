@@ -17,3 +17,8 @@ export const INVITATIONS_GET = '/code-connection/cards/invitations';
 export const ARTICLE_BY_ID = (id: string) => `/scholar/articles/${id}`;
 
 export const COMMENT_ARTICLE_BY_ID = (id: string) => `/scholar/articles/${id}/comments`;
+
+export const CONTESTS_GET = '/contests';
+
+export const MATERIALS_GET = '/scholar/materials';
+export const MATERIAL_BY_ID = (id: string) => `/scholar/materials/${id}`;

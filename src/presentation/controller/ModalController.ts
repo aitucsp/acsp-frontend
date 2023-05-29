@@ -19,6 +19,14 @@ export default class ModalController {
         return this.modalRepository.getModalOpenedByType(ModalType.CreateSearchOfTeammate);
     }
 
+    public get isInviteTeammateModalOpened(): boolean {
+        return this.modalRepository.getModalOpenedByType(ModalType.InviteTeammate);
+    }
+
+    public get isVideoModalOpened(): boolean {
+        return this.modalRepository.getModalOpenedByType(ModalType.Video);
+    }
+
     public handleSignInModalOpen = (): void => {
         this.modalRepository.setModalOpened(ModalType.SignIn);
     };
@@ -41,5 +49,21 @@ export default class ModalController {
 
     public handleCreateSearchOfTeammateModalClose = (): void => {
         this.modalRepository.setModalClosed(ModalType.CreateSearchOfTeammate);
+    };
+
+    public handleInviteTeammateModalOpen = (): void => {
+        this.modalRepository.setModalOpened(ModalType.InviteTeammate);
+    };
+
+    public handleInviteTeammateModalClose = (): void => {
+        this.modalRepository.setModalClosed(ModalType.InviteTeammate);
+    };
+
+    public handleVideoModalOpen = (): void => {
+        this.modalRepository.setModalOpened(ModalType.Video);
+    };
+
+    public handleVideoModalClose = (): void => {
+        this.modalRepository.setModalClosed(ModalType.Video);
     };
 }

@@ -17,6 +17,7 @@ export const Title = styled.h2`
 export const TitleWrapper = styled.div`
     display: flex;
     gap: 12px;
+    align-items: center;
 `;
 
 export const Pill = styled.button<PillProps>`
@@ -29,4 +30,5 @@ export const Pill = styled.button<PillProps>`
     border-radius: 9999px;
     background-color: ${({ active }) => (active ? '#0DA16C' : '#b6bbc8')};
     padding: 0 20px;
+    height: 40px;
 `;

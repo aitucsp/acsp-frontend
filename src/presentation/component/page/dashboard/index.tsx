@@ -1,5 +1,7 @@
 import React from 'react';
 import { NextPage } from 'next';
+import NextLink from 'next/link';
+import { CONTESTS, PROFILE, SCHOLAR, TEAMMATES } from 'constant/route';
 import goIcon from 'presentation/svg/go.svg?sprite';
 import chatIcon from 'presentation/svg/navbar/chat.svg?sprite';
 import capIcon from 'presentation/svg/navbar/cap.svg?sprite';
@@ -7,6 +9,8 @@ import capIcon from 'presentation/svg/navbar/cap.svg?sprite';
 import backpackIcon from 'presentation/svg/navbar/backpack.svg?sprite';
 import studentsIcon from 'presentation/svg/navbar/students.svg?sprite';
 // import trophyIcon from 'presentation/svg/navbar/trophy.svg?sprite';
+import { useService } from 'presentation/context/Container';
+import AppGlobalController from 'presentation/controller/AppGlobalController';
 import DashboardLayout from 'presentation/component/layout/DashboardLayout';
 import Button from 'presentation/component/common/control/Button';
 import {
@@ -24,6 +28,8 @@ import {
 } from './styles';
 
 const DashboardPage: NextPage = () => {
+    const { user } = useService(AppGlobalController);
+
     return (
         <DashboardLayout>
             <Wrapper>
@@ -42,37 +48,27 @@ const DashboardPage: NextPage = () => {
                 <CardGrid>
                     <Card color="#18435a">
                         <Left>
-                            <CardHeading>Edit profile</CardHeading>
-                            <Subtitle>Start by editing your profile</Subtitle>
+                            <CardHeading>My profile</CardHeading>
+                            <Subtitle>View your profile</Subtitle>
                         </Left>
-                        <Right>
-                            <CardIcon icon={goIcon} />
-                        </Right>
-                    </Card>
-                    <Card color="#0DA16C">
-                        <Left>
-                            <CardHeading>Chat!</CardHeading>
-                            <Subtitle>
-                                Chat with students of all courses and find common interests
-                            </Subtitle>
-                            <Button color="white" css={customButtonCss('#0DA16C')} size="small">
-                                Let’s go
-                            </Button>
-                        </Left>
-                        <Right>
-                            <CardIcon icon={chatIcon} />
-                        </Right>
+                        <NextLink href={PROFILE(user.id)}>
+                            <Right>
+                                <CardIcon icon={goIcon} />
+                            </Right>
+                        </NextLink>
                     </Card>
                     <Card color="#3E92CC">
                         <Left>
-                            <CardHeading>Useful materials</CardHeading>
+                            <CardHeading>Scholar</CardHeading>
                             <Subtitle>
                                 Write your useful articles on various topics, read and learn new
                                 things for yourself
                             </Subtitle>
-                            <Button color="white" css={customButtonCss('#3E92CC')} size="small">
-                                Let’s go
-                            </Button>
+                            <NextLink href={SCHOLAR}>
+                                <Button color="white" css={customButtonCss('#3E92CC')} size="small">
+                                    Let’s go
+                                </Button>
+                            </NextLink>
                         </Left>
                         <Right>
                             <CardIcon icon={backpackIcon} />
@@ -80,14 +76,13 @@ const DashboardPage: NextPage = () => {
                     </Card>
                     <Card color="#2A628F">
                         <Left>
-                            <CardHeading>Forum</CardHeading>
-                            <Subtitle>
-                                Ask questions and get answers, answer yourself and increase your
-                                rank
-                            </Subtitle>
-                            <Button color="white" css={customButtonCss('#2A628F')} size="small">
-                                Let’s go
-                            </Button>
+                            <CardHeading>Search of teammates</CardHeading>
+                            <Subtitle>Find your teammate for any task or project</Subtitle>
+                            <NextLink href={TEAMMATES}>
+                                <Button color="white" css={customButtonCss('#2A628F')} size="small">
+                                    Let’s go
+                                </Button>
+                            </NextLink>
                         </Left>
                         <Right>
                             <CardIcon icon={studentsIcon} />
@@ -97,7 +92,7 @@ const DashboardPage: NextPage = () => {
                         <Left>
                             <CardHeading>Learn!</CardHeading>
                             <Subtitle>
-                                Complete practical tasks and take courses from experienced students
+                                Enroll in projects and take courses from experienced students
                             </Subtitle>
                             <Button color="white" css={customButtonCss('#0DA16C')} size="small">
                                 Let’s go
@@ -114,9 +109,11 @@ const DashboardPage: NextPage = () => {
                                 Register and pay for events directly on the website and get a new
                                 invaluable experience
                             </Subtitle>
-                            <Button color="white" css={customButtonCss('#18435A')} size="small">
-                                Let’s go
-                            </Button>
+                            <NextLink href={CONTESTS}>
+                                <Button color="white" css={customButtonCss('#18435A')} size="small">
+                                    Let’s go
+                                </Button>
+                            </NextLink>
                         </Left>
                         <Right>
                             <CardIcon icon={chatIcon} />

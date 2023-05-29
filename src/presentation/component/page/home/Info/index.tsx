@@ -1,21 +1,21 @@
 import React from 'react';
 import {
-    Wrapper,
-    ImageWrapper,
-    Image,
-    Heading,
-    Content,
-    Description,
-    NumbersText,
-    BoxContainer,
     Box,
+    BoxContainer,
     BoxHeading,
     BoxText,
+    Content,
+    Description,
+    Heading,
+    Image,
+    ImageWrapper,
+    NumbersText,
+    Wrapper,
 } from './styles';
 
 const Info = () => {
     return (
-        <Wrapper>
+        <Wrapper id="for-students">
             <ImageWrapper>
                 <Image src="/images/landing/info-bg.png" alt="Astana IT University" />
             </ImageWrapper>

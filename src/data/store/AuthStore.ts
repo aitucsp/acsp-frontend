@@ -1,4 +1,4 @@
-import { action, autorun, makeObservable, observable } from 'mobx';
+import { action, makeObservable, observable } from 'mobx';
 import User from 'domain/entity/app/User';
 
 export default class AuthStore {
@@ -6,17 +6,16 @@ export default class AuthStore {
 
     public message = '';
 
+    public signUpMessage = '';
+
     constructor() {
         makeObservable(this, {
             user: observable,
             message: observable,
+            signUpMessage: observable,
             setUser: action.bound,
             setMessage: action.bound,
-        });
-
-        autorun(() => {
-            console.log('AuthStore has changed:');
-            console.log('User:', this.user);
+            setSignUpMessage: action.bound,
         });
     }
 
@@ -26,5 +25,9 @@ export default class AuthStore {
 
     public setMessage(message: string) {
         this.message = message;
+    }
+
+    public setSignUpMessage(message: string) {
+        this.signUpMessage = message;
     }
 }

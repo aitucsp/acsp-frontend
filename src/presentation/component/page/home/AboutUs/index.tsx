@@ -25,7 +25,7 @@ import {
 
 const AboutUs = () => {
     return (
-        <Container>
+        <Container id="about">
             <Wrapper>
                 <Content>
                     <Heading>

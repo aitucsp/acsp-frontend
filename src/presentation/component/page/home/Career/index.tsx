@@ -21,7 +21,7 @@ import {
 
 const Career = () => {
     return (
-        <Container>
+        <Container id="career">
             <Wrapper>
                 <ImageBlock>
                     <NextImage src={career1} width={510} height={281} quality={100} />
@@ -51,9 +51,15 @@ const Career = () => {
                         <CheckIcon icon={checkIcon} />
                         <CheckText>Earn with us</CheckText>
                     </CheckList>
-                    <Button icon={notepadIcon} size="large" css={submitButtonCss}>
-                        Submit your application
-                    </Button>
+                    <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSdYtR6MvTqj4DYjCowOQQszlhsw5VLJvFTz1ZE-s5YctV6PRA/viewform"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <Button icon={notepadIcon} size="large" css={submitButtonCss}>
+                            Submit your application
+                        </Button>
+                    </a>
                 </Content>
             </Wrapper>
         </Container>

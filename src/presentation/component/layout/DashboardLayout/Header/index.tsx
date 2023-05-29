@@ -17,7 +17,6 @@ import {
 const Header = () => {
     const { handleLogoutButtonClick } = useService(AuthController);
     const { user } = useService(AppGlobalController);
-    console.log(user);
 
     return (
         <Wrapper>
@@ -27,7 +26,7 @@ const Header = () => {
                     <Name>{user.name ?? ''}</Name>
                     <Description>{user?.role?.toLowerCase() ?? ''}</Description>
                 </Info>
-                <Avatar src="https://bsa.web.unc.edu/wp-content/uploads/sites/14595/2019/10/kushal_student_profile.jpg" />
+                <Avatar src={`https://${user.image_url}`} />
                 <Dropdown icon={linkArrowIcon} onClick={handleLogoutButtonClick} />
             </UserWrapper>
         </Wrapper>

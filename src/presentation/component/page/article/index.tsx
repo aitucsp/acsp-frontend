@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { format, parseISO } from 'date-fns';
+import { toast } from 'react-toastify';
 import { ARTICLE_BY_ID, COMMENT_ARTICLE_BY_ID } from 'constant/apiRoutes';
 import ApiClient from 'data/driver/ApiClient';
 import likeIcon from 'presentation/svg/ui/like.svg?sprite';
 import eyeIcon from 'presentation/svg/ui/eye.svg?sprite';
 import commentIcon from 'presentation/svg/ui/comment.svg?sprite';
 import DashboardLayout from 'presentation/component/layout/DashboardLayout';
+import Spinner from 'presentation/component/common/block/Spinner';
 import {
     Detail,
     DetailIcon,
@@ -64,6 +66,7 @@ const ArticlePage: NextPage = () => {
             const { data } = await api.restWithAuthorization.post(COMMENT_ARTICLE_BY_ID(id), {
                 text,
             });
+            toast('Comment added successfully', { type: 'success' });
             await getArticle(articleId as string).then((data1) => setArticle(data1.article));
             if (data) {
                 return data;
@@ -71,43 +74,42 @@ const ArticlePage: NextPage = () => {
         } catch {}
     };
 
-    if (!article) {
-        return null;
-    }
-
     return (
         <DashboardLayout>
-            <Wrapper>
-                <Title>Articles: Post</Title>
-                <Header>
-                    <Author>
-                        <AuthorImage src="https://minervaschools-production-cms-uploads.s3.amazonaws.com/images/20150916_MNRV_220.2e16d0ba.fill-724x452.jpg?could_not_match_s3_bucket_and_object" />
-                        <AuthorName>Tamerlan</AuthorName>
-                    </Author>
-                    <HeaderContent>
-                        <Details>
-                            <Detail>
-                                <DetailText>{date}</DetailText>
-                            </Detail>
-                            <Detail>
-                                <DetailIcon icon={likeIcon} />
-                                <DetailText>{article.upvote}</DetailText>
-                            </Detail>
-                            <Detail>
-                                <DetailIcon icon={eyeIcon} />
-                                <DetailText>0</DetailText>
-                            </Detail>
-                            <Detail>
-                                <DetailIcon icon={commentIcon} />
-                                <DetailText>0</DetailText>
-                            </Detail>
-                        </Details>
-                        <ArticleTitle>{article.topic}</ArticleTitle>
-                    </HeaderContent>
-                </Header>
-                <Text>{article.description}</Text>
-                <Answers addComment={addComment} comments={article.comments} />
-            </Wrapper>
+            {!article && <Spinner />}
+            {article && (
+                <Wrapper>
+                    <Title>Articles: Post</Title>
+                    <Header>
+                        <Author>
+                            <AuthorImage src="https://minervaschools-production-cms-uploads.s3.amazonaws.com/images/20150916_MNRV_220.2e16d0ba.fill-724x452.jpg?could_not_match_s3_bucket_and_object" />
+                            <AuthorName>Tamerlan</AuthorName>
+                        </Author>
+                        <HeaderContent>
+                            <Details>
+                                <Detail>
+                                    <DetailText>{date}</DetailText>
+                                </Detail>
+                                <Detail>
+                                    <DetailIcon icon={likeIcon} />
+                                    <DetailText>{article.upvote}</DetailText>
+                                </Detail>
+                                <Detail>
+                                    <DetailIcon icon={eyeIcon} />
+                                    <DetailText>0</DetailText>
+                                </Detail>
+                                <Detail>
+                                    <DetailIcon icon={commentIcon} />
+                                    <DetailText>0</DetailText>
+                                </Detail>
+                            </Details>
+                            <ArticleTitle>{article.topic}</ArticleTitle>
+                        </HeaderContent>
+                    </Header>
+                    <Text>{article.description}</Text>
+                    <Answers addComment={addComment} comments={article.comments} />
+                </Wrapper>
+            )}
         </DashboardLayout>
     );
 };

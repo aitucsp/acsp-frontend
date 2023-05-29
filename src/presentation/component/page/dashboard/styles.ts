@@ -49,6 +49,7 @@ export const Left = styled.div``;
 export const Right = styled.div`
     display: flex;
     justify-content: center;
+    cursor: pointer;
 `;
 
 export const Subtitle = styled.span`

@@ -1,14 +1,16 @@
 import { inject, injectable } from 'inversify';
 import HttpStatusCode from 'constant/HttpStatusCode';
-import { GET_PROFILE, SIGN_IN } from 'constant/apiRoutes';
+import { GET_PROFILE, SIGN_IN, SIGN_UP } from 'constant/apiRoutes';
 import LoginResult from 'domain/entity/auth/LoginResult';
 import LogoutResult from 'domain/entity/auth/LogoutResult';
 import User from 'domain/entity/app/User';
 import UserRole from 'domain/entity/app/UserRole';
+import SignUpResult from 'domain/entity/auth/SignUpResult';
 import AuthRepository from 'domain/repository/auth/AuthRepository';
 import AppRepository from 'domain/repository/app/AppRepository';
 import ApiClient from 'data/driver/ApiClient';
 import CredentialsResponseDTO from 'data/DTO/auth/CredentialsResponseDTO';
+import SignUpResponseDTO from 'data/DTO/auth/SignUpResponseDTO';
 import AuthStore from 'data/store/AuthStore';
 import AbstractApi from 'data/AbstractApiClient';
 import Credentials from 'data/AbstractApiClient/Credentials';
@@ -31,6 +33,14 @@ export default class AuthRepositoryImpl extends AuthRepository {
         this.store.setMessage(message);
     }
 
+    public getSignUpMessage(): string {
+        return this.store.signUpMessage;
+    }
+
+    public setSignUpMessage(message: string): void {
+        this.store.setSignUpMessage(message);
+    }
+
     public async login(email: string, password: string): Promise<LoginResult> {
         try {
             const { data } = await this.abstractApi.rest.post<CredentialsResponseDTO>(SIGN_IN, {
@@ -46,14 +56,14 @@ export default class AuthRepositoryImpl extends AuthRepository {
 
             if (credentials) {
                 this.abstractApi.setCredentials(credentials, true);
-                this.appRepository.setUser(new User(123, UserRole.STUDENT, '', '', ''));
-                this.store.setUser(new User(123, UserRole.STUDENT, '', '', ''));
+                this.appRepository.setUser(new User(123, UserRole.STUDENT, '', '', '', {}));
+                this.store.setUser(new User(123, UserRole.STUDENT, '', '', '', {}));
 
                 return LoginResult.SuccessfullyLoggedIn;
             }
 
-            this.appRepository.setUser(new User(NaN, UserRole.VISITOR, '', '', ''));
-            this.store.setUser(new User(NaN, UserRole.VISITOR, '', '', ''));
+            this.appRepository.setUser(new User(NaN, UserRole.VISITOR, '', '', '', {}));
+            this.store.setUser(new User(NaN, UserRole.VISITOR, '', '', '', {}));
 
             return LoginResult.UnknownError;
         } catch ({ response }) {
@@ -65,13 +75,43 @@ export default class AuthRepositoryImpl extends AuthRepository {
         }
     }
 
+    public async signUp(
+        email: string,
+        name: string,
+        password: string,
+        repeatedPassword: string,
+    ): Promise<SignUpResult> {
+        try {
+            const { data } = await this.abstractApi.rest.post<SignUpResponseDTO>(SIGN_UP, {
+                email,
+                password,
+                repeatedPassword,
+                name,
+            });
+
+            if (data && data.message === 'Successfully registered') {
+                return SignUpResult.SuccessfullySignedUp;
+            }
+
+            return SignUpResult.UnknownError;
+        } catch ({ response }) {
+            if (response.status === HttpStatusCode.Unauthorized) {
+                return SignUpResult.InvalidData;
+            }
+
+            return SignUpResult.UnknownError;
+        }
+    }
+
     public async fetchUser(): Promise<any> {
         const { data } = await this.abstractApi.restWithAuthorization.get(GET_PROFILE);
 
         // eslint-disable-next-line @typescript-eslint/naming-convention
-        const { id, email, image_url, name } = data.user;
+        const { id, email, image_url, name, user_details } = data.user;
 
-        this.appRepository.setUser(new User(id, UserRole.STUDENT, email, name, image_url));
+        this.appRepository.setUser(
+            new User(id, UserRole.STUDENT, email, name, image_url, user_details),
+        );
 
         return data;
     }

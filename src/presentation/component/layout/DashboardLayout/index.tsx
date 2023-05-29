@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from 'presentation/component/layout/DashboardLayout/Header';
 import Navbar from 'presentation/component/layout/DashboardLayout/Navbar';
-import Sidebar from 'presentation/component/layout/DashboardLayout/Sidebar';
 import Footer from 'presentation/component/layout/DashboardLayout/Footer';
+import Sidebar from 'presentation/component/layout/DashboardLayout/Sidebar';
 import { DashboardWrapper, MainWrapper, RightWrapper, SafeChildrenWrapper } from './styles';
 
 type Props = {

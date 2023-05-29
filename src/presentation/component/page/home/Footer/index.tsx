@@ -23,7 +23,9 @@ const Footer = () => {
                         <Link href="/src/pages">Career</Link>
                         <Link href="/src/pages">Contacts</Link>
                     </Links>
-                    <Button>Support</Button>
+                    <a href="https://t.me/eldos_manap" target="_blank" rel="noreferrer">
+                        <Button>Support</Button>
+                    </a>
                 </Right>
             </Wrapper>
         </Container>

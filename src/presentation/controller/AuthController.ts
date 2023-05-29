@@ -3,6 +3,7 @@ import { NextRouter, useRouter } from 'next/router';
 import { DASHBOARD } from 'constant/route';
 import LoginResult from 'domain/entity/auth/LoginResult';
 import ModalType from 'domain/entity/modal/ModalType';
+import SignUpResult from 'domain/entity/auth/SignUpResult';
 import AuthRepository from 'domain/repository/auth/AuthRepository';
 import ModalRepository from 'domain/repository/modal/ModalRepository';
 
@@ -18,6 +19,10 @@ export default class AuthController {
 
     public get message(): string {
         return this.authRepository.getMessage();
+    }
+
+    public get signUpMessage(): string {
+        return this.authRepository.getSignUpMessage();
     }
 
     public fetchUser = async (): Promise<any> => {
@@ -46,6 +51,33 @@ export default class AuthController {
 
         if (loginResult === LoginResult.UnknownError) {
             this.authRepository.setMessage('Incorrect email or password');
+        }
+    };
+
+    public handleSignUpFormSubmit = async (
+        email: string,
+        name: string,
+        password: string,
+        repeatedPassword: string,
+    ): Promise<void> => {
+        this.authRepository.setMessage('');
+        this.authRepository.setSignUpMessage('');
+
+        if (password !== repeatedPassword) {
+            this.authRepository.setSignUpMessage('Passwords do not match');
+
+            return;
+        }
+
+        const signUpResult = await this.authRepository.signUp(
+            email,
+            name,
+            password,
+            repeatedPassword,
+        );
+
+        if (signUpResult === SignUpResult.SuccessfullySignedUp) {
+            this.authRepository.setSignUpMessage('Successfully signed up. Now you can sign in');
         }
     };
 
