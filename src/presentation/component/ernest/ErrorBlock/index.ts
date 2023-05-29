@@ -15,3 +15,24 @@ const Wrapper = styled.div`
 `;
 
 export default Wrapper;
+
+export const Links = styled.nav`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`;
+
+export const Link = styled.a`
+    font-size: ${rem(16)};
+    font-weight: ${({ theme }) => theme.font.weight.regular};
+`;
+
+export const Buttons = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+`;
+
+export const LogoIcon = styled(SvgSpriteIcon)`
+    width: 54px;
+`;
